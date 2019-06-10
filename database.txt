@@ -1,0 +1,20 @@
+CREATE DATABASE login_sys2 CHARACTER SET utf8 COLLATE utf8_general_ci; USE
+    login_sys2;
+CREATE TABLE `users-lic`(
+    user_id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(20) NOT NULL,
+    last_name VARCHAR(40) NOT NULL,
+    email VARCHAR(60) NOT NULL UNIQUE,
+    pass VARCHAR(255) NOT NULL,
+    user_level TINYINT(1) NOT NULL DEFAULT 0,
+    active TINYINT(1) NOT NULL DEFAULT 0,
+    failed_logins TINYINT(1) NOT NULL DEFAULT 0,
+    lockout TINYINT(1) NOT NULL DEFAULT 0,
+    lockout_time INT DEFAULT 0,
+    pw_reset_token VARCHAR(255),
+    pw_reset_timer INT,
+    last_login TIMESTAMP,
+    registration_date TIMESTAMP NOT NULL
+);
+
+INSERT INTO `users-lic` (first_name, last_name, email, pass, user_level, active, failed_logins, lockout, pw_reset_token) VALUES ('Default', 'Default', 'default@localhost.com', '$2y$10$lGHyB9mJ1NNaEjbeoTwnNOUrXWafFp/pjBcp9f00LIqq7gjahwGkq' , 1, 1, 0, 0, 0);
